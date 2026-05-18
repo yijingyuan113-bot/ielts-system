@@ -1,0 +1,50 @@
+[
+  {
+    "id": "speaking-001",
+    "type": "qa",
+    "question": "Describe a memorable trip you have taken.",
+    "hints": [
+      "Where did you go?",
+      "What did you do there?",
+      "Why was it memorable?"
+    ],
+    "sampleAnswer": "One of the most memorable trips I've ever taken was to Japan last summer. I spent two weeks exploring Tokyo, Kyoto, and Osaka. What made this trip truly special was the blend of ancient traditions and modern innovation I encountered everywhere. I visited ancient temples, tried authentic sushi, and experienced the efficiency of the bullet train. This journey not only broadened my cultural horizons but also taught me the value of patience and attention to detail.",
+    "duration": 120
+  },
+  {
+    "id": "speaking-002",
+    "type": "qa",
+    "question": "Talk about a book that you have recently read.",
+    "hints": [
+      "What was it about?",
+      "Why did you choose to read it?",
+      "Would you recommend it?"
+    ],
+    "sampleAnswer": "I recently finished reading 'Sapiens' by Yuval Noah Harari, which explores the history of humankind from Stone Age to the present. I chose this book after a friend recommended it, and it completely changed my perspective on human civilization. The author's ability to connect seemingly unrelated historical events was fascinating. I would highly recommend it to anyone interested in understanding how our species evolved and the challenges we face today.",
+    "duration": 120
+  },
+  {
+    "id": "speaking-003",
+    "type": "qa",
+    "question": "Describe a person who has influenced you.",
+    "hints": [
+      "Who is this person?",
+      "How do you know them?",
+      "Why are they influential?"
+    ],
+    "sampleAnswer": "The person who has had the greatest influence on my life is my grandmother. She raised me during my early childhood while my parents worked overseas. Her resilience in facing life's challenges taught me the importance of perseverance. Despite having limited education, she demonstrated remarkable wisdom in handling difficult situations. Her unconditional love and practical approach to problems have shaped my character significantly.",
+    "duration": 120
+  },
+  {
+    "id": "speaking-004",
+    "type": "qa",
+    "question": "Describe your favorite type of music.",
+    "hints": [
+      "What type of music do you enjoy?",
+      "When do you usually listen to it?",
+      "Why is it important to you?"
+    ],
+    "sampleAnswer": "My favorite type of music is classical piano, particularly the works of Chopin and Debussy. I usually listen to it while studying or during early morning walks. What draws me to this genre is the emotional depth and technical brilliance of the compositions. The piano pieces provide a sense of calm and focus that helps me concentrate on my work. Music has always been a source of inspiration and relaxation in my life.",
+    "duration": 120
+  }
+]

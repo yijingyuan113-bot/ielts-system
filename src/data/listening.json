@@ -1,0 +1,39 @@
+[
+  {
+    "id": "listening-001",
+    "title": "Travel and Tourism",
+    "difficulty": "medium",
+    "part": 1,
+    "audioUrl": "/audio/listening-001.mp3",
+    "transcript": "Welcome to the travel information center. Our guided tours depart daily from the main entrance at 9 a.m. The tour includes visits to the historic museum, the botanical gardens, and the famous lighthouse.",
+    "questions": [
+      { "id": "q1", "type": "fill-blank", "question": "The tour starts at _____ a.m.", "answer": "9" },
+      { "id": "q2", "type": "fill-blank", "question": "Meet at the _____ entrance.", "answer": "main" },
+      { "id": "q3", "type": "fill-blank", "question": "The tour includes visits to the museum, gardens, and the _____", "answer": "lighthouse" }
+    ]
+  },
+  {
+    "id": "listening-002",
+    "title": "Library Services",
+    "difficulty": "easy",
+    "part": 1,
+    "audioUrl": "/audio/listening-002.mp3",
+    "transcript": "Hello and welcome to the city library. Our opening hours are from 9 a.m. to 6 p.m., Monday to Saturday. We offer a wide range of services including book borrowing, internet access, and study rooms.",
+    "questions": [
+      { "id": "q1", "type": "fill-blank", "question": "Opening hours are from _____ to 6 p.m.", "answer": "9" },
+      { "id": "q2", "type": "fill-blank", "question": "The library is open Monday to _____", "answer": "Saturday" }
+    ]
+  },
+  {
+    "id": "listening-003",
+    "title": "Hotel Reservation",
+    "difficulty": "medium",
+    "part": 1,
+    "audioUrl": "/audio/listening-003.mp3",
+    "transcript": "Good morning, this is Riverside Hotel. How may I help you? We have several room types available: single rooms for $100 per night, double rooms for $150, and suites for $250. Breakfast is included.",
+    "questions": [
+      { "id": "q1", "type": "fill-blank", "question": "Single rooms cost $_____ per night.", "answer": "100" },
+      { "id": "q2", "type": "multiple", "question": "Which meal is included in the room price?", "answer": "breakfast" }
+    ]
+  }
+]
