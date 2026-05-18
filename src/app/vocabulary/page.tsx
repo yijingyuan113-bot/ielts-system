@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import { vocabularyData, levelLabels, levelColors, Word } from '@/data/vocabulary.json'
@@ -17,19 +17,19 @@ export default function Vocabulary() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
-  const [knownWords, setKnownWords] = useState<Set<number>>(new Set())
-  const [reviewWords, setReviewWords] = useState<Set<number>>(new Set())
+  const [knownWords, setKnownWords] = useState<number[]>([])
+  const [reviewWords, setReviewWords] = useState<number[]>([])
 
   useEffect(() => {
     const savedKnown = localStorage.getItem('vocabulary_known')
     const savedReview = localStorage.getItem('vocabulary_review')
-    if (savedKnown) setKnownWords(new Set(JSON.parse(savedKnown)))
-    if (savedReview) setReviewWords(new Set(JSON.parse(savedReview)))
+    if (savedKnown) setKnownWords(JSON.parse(savedKnown))
+    if (savedReview) setReviewWords(JSON.parse(savedReview))
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('vocabulary_known', JSON.stringify([...knownWords]))
-    localStorage.setItem('vocabulary_review', JSON.stringify([...reviewWords]))
+    localStorage.setItem('vocabulary_known', JSON.stringify(knownWords))
+    localStorage.setItem('vocabulary_review', JSON.stringify(reviewWords))
   }, [knownWords, reviewWords])
 
   let filteredWords: Word[] = []
@@ -37,14 +37,16 @@ export default function Vocabulary() {
   cats.forEach(cat => { if (vocabularyData[cat]) filteredWords = [...filteredWords, ...vocabularyData[cat]] })
 
   const totalWords = Object.values(vocabularyData).flat().length
+  const knownSet = new Set(knownWords)
+  const reviewSet = new Set(reviewWords)
 
   const handleMark = (known: boolean) => {
     const w = filteredWords[currentIndex]
     if (known) {
-      setKnownWords(prev => new Set([...prev, w.id]))
-      setReviewWords(prev => { const n = new Set(prev); n.delete(w.id); return n })
+      if (!knownSet.has(w.id)) setKnownWords([...knownWords, w.id])
+      setReviewWords(reviewWords.filter(id => id !== w.id))
     } else {
-      setReviewWords(prev => new Set([...prev, w.id]))
+      if (!reviewSet.has(w.id)) setReviewWords([...reviewWords, w.id])
     }
     setIsFlipped(false)
     setTimeout(() => setCurrentIndex(i => i < filteredWords.length - 1 ? i + 1 : 0), 200)
@@ -56,18 +58,18 @@ export default function Vocabulary() {
         <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">📚 雅思词汇背诵</h1>
         <p className="text-gray-600 mt-1">点击卡片翻转查看详细解释</p>
         <div className="mt-4 flex justify-center gap-6 text-sm">
-          <span className="text-green-600">✓ 已掌握: {knownWords.size}</span>
-          <span className="text-orange-500">⟳ 待复习: {reviewWords.size}</span>
+          <span className="text-green-600">✓ 已掌握: {knownSet.size}</span>
+          <span className="text-orange-500">⟳ 待复习: {reviewSet.size}</span>
         </div>
         <div className="mt-3 max-w-md mx-auto bg-white rounded-full h-2 overflow-hidden">
-          <div className="h-full bg-gradient-to-r from-green-400 to-blue-500" style={{ width: `${(knownWords.size / totalWords) * 100}%` }} />
+          <div className="h-full bg-gradient-to-r from-green-400 to-blue-500" style={{ width: ${(knownSet.size / totalWords) * 100}% }} />
         </div>
       </header>
 
       <div className="flex flex-wrap gap-2 justify-center mb-6">
         {categories.map(cat => (
           <button key={cat.id} onClick={() => { setSelectedCategory(cat.id); setCurrentIndex(0); setIsFlipped(false) }}
-            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${selectedCategory === cat.id ? 'bg-blue-500 text-white' : 'bg-white text-gray-600 hover:bg-blue-100'}`}>
+            className={px-3 py-1.5 rounded-full text-sm font-medium transition-all }>
             {cat.icon} {cat.name}
           </button>
         ))}
@@ -79,7 +81,7 @@ export default function Vocabulary() {
           <div className="relative h-80 cursor-pointer" onClick={() => setIsFlipped(!isFlipped)}>
             {!isFlipped ? (
               <div className="absolute inset-0 bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center">
-                <span className={`px-3 py-1 rounded-full text-sm font-medium mb-4 ${levelColors[filteredWords[currentIndex].level]}`}>{levelLabels[filteredWords[currentIndex].level]}</span>
+                <span className={px-3 py-1 rounded-full text-sm font-medium mb-4 }>{levelLabels[filteredWords[currentIndex].level]}</span>
                 <h2 className="text-4xl font-bold text-gray-800 mb-2">{filteredWords[currentIndex].word}</h2>
                 <p className="text-lg text-gray-600 mb-2">{filteredWords[currentIndex].phonetic}</p>
                 <p className="text-blue-600">{filteredWords[currentIndex].meaning}</p>
