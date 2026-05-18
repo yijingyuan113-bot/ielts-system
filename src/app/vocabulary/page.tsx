@@ -52,6 +52,8 @@ export default function Vocabulary() {
     setTimeout(() => setCurrentIndex(i => i < filteredWords.length - 1 ? i + 1 : 0), 200)
   }
 
+  const progressWidth = totalWords > 0 ? (knownSet.size / totalWords) * 100 : 0
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 p-6">
       <header className="mb-8 text-center">
@@ -62,14 +64,14 @@ export default function Vocabulary() {
           <span className="text-orange-500">⟳ 待复习: {reviewSet.size}</span>
         </div>
         <div className="mt-3 max-w-md mx-auto bg-white rounded-full h-2 overflow-hidden">
-          <div className="h-full bg-gradient-to-r from-green-400 to-blue-500" style={{ width: ${(knownSet.size / totalWords) * 100}% }} />
+          <div className="h-full bg-gradient-to-r from-green-400 to-blue-500" style={{ width: progressWidth + '%' }} />
         </div>
       </header>
 
       <div className="flex flex-wrap gap-2 justify-center mb-6">
         {categories.map(cat => (
           <button key={cat.id} onClick={() => { setSelectedCategory(cat.id); setCurrentIndex(0); setIsFlipped(false) }}
-            className={px-3 py-1.5 rounded-full text-sm font-medium transition-all }>
+            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${selectedCategory === cat.id ? 'bg-blue-500 text-white' : 'bg-white text-gray-600 hover:bg-blue-100'}`}>
             {cat.icon} {cat.name}
           </button>
         ))}
@@ -81,7 +83,7 @@ export default function Vocabulary() {
           <div className="relative h-80 cursor-pointer" onClick={() => setIsFlipped(!isFlipped)}>
             {!isFlipped ? (
               <div className="absolute inset-0 bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center">
-                <span className={px-3 py-1 rounded-full text-sm font-medium mb-4 }>{levelLabels[filteredWords[currentIndex].level]}</span>
+                <span className={`px-3 py-1 rounded-full text-sm font-medium mb-4 ${levelColors[filteredWords[currentIndex].level]}`}>{levelLabels[filteredWords[currentIndex].level]}</span>
                 <h2 className="text-4xl font-bold text-gray-800 mb-2">{filteredWords[currentIndex].word}</h2>
                 <p className="text-lg text-gray-600 mb-2">{filteredWords[currentIndex].phonetic}</p>
                 <p className="text-blue-600">{filteredWords[currentIndex].meaning}</p>
